@@ -1,7 +1,7 @@
 # OceanCentinell USA
 
 **Owner / intended publisher:** Beacon of the Eagle LLC  
-**Status:** functional local-first MVP **v0.1.0**, not production-ready.  
+**Status:** functional local-first MVP **v0.2.0**, not production-ready.  
 **Target market:** United States. The release territory must be selected in Google Play Console.
 
 ## Features available today
@@ -30,7 +30,7 @@ npm install
 npm run dev
 ```
 
-## Android development (requires Node.js, Android Studio, JDK and Android SDK)
+## Android development (Capacitor 8 / Android API 36; requires Node.js 22+, Android Studio and Android SDK)
 ```sh
 npm install
 npm run build
@@ -53,3 +53,6 @@ Copyright © 2026 Beacon of the Eagle LLC. All rights reserved, subject to verif
 
 ## Public repository caution
 This repository was found to be **public**. Do not commit API keys, private maritime telemetry, customer records, secrets or proprietary enterprise source code. Change visibility through repository settings before putting confidential code here. This MVP contains only generic sample data created for demonstration.
+
+## CI / release preparation
+GitHub Actions workflow `.github/workflows/android-build.yml` builds a **debug testing APK**, if it completes successfully. See the Actions tab and download the run artifact. A debug build is not a signed production AAB. See `GOOGLE_PLAY_USA.md`, `PRIVACY_POLICY.md`, and `COPYRIGHT_PREPARATION.md` for release and rights checklists.
