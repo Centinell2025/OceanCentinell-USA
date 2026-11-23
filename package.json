@@ -1,6 +1,6 @@
 {
   "name": "oceancentinell-usa",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "OceanCentinell USA maritime operations local-first MVP",
   "scripts": {
@@ -9,12 +9,13 @@
     "preview": "vite preview --host 127.0.0.1",
     "android:add": "npm run build && npx cap add android",
     "android:sync": "npm run build && npx cap sync android",
-    "android:open": "npx cap open android"
+    "android:open": "npx cap open android",
+    "android:debug": "npm run build && npx cap sync android && cd android && ./gradlew assembleDebug"
   },
   "devDependencies": {
-    "@capacitor/android": "^7.4.0",
-    "@capacitor/cli": "^7.4.0",
-    "@capacitor/core": "^7.4.0",
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
     "vite": "^7.3.0"
   }
 }
