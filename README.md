@@ -1,7 +1,7 @@
 # OceanCentinell USA
 
 **Owner / intended publisher:** Beacon of the Eagle LLC  
-**Status:** functional local-first MVP **v0.2.0**, not production-ready.  
+**Status:** functional local-first MVP **v0.3.0**, not production-ready.  
 **Target market:** United States. The release territory must be selected in Google Play Console.
 
 ## Features available today
@@ -56,3 +56,13 @@ This repository was found to be **public**. Do not commit API keys, private mari
 
 ## CI / release preparation
 GitHub Actions workflow `.github/workflows/android-build.yml` builds a **debug testing APK**, if it completes successfully. See the Actions tab and download the run artifact. A debug build is not a signed production AAB. See `GOOGLE_PLAY_USA.md`, `PRIVACY_POLICY.md`, and `COPYRIGHT_PREPARATION.md` for release and rights checklists.
+
+## Security hardening in v0.3.0
+- Data schema validation with row/length limits, strict status values, ISO date checks, and unique record IDs.
+- Atomic local writes: failed storage operations do not silently alter the visible dataset.
+- Hardened CSV exports against spreadsheet formula injection.
+- Same-origin Content Security Policy and separate JavaScript/CSS bundles.
+- Regression tests: `npm test` (Node 22+) and CI dependency audit before building the Android debug APK.
+- Security limitations and production prerequisites: see `SECURITY.md`.
+
+**Important:** These are prototype-level safeguards, not encryption, user authorization, real-time maritime monitoring, security certification or validation of an Android release.
