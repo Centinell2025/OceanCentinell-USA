@@ -1,0 +1,57 @@
+name: Android test build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'package.json'
+      - 'capacitor.config.json'
+      - '.github/workflows/android-build.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-debug-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install Android SDK
+        uses: android-actions/setup-android@v3
+      - name: Install API 36 and build tools
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools"
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build web app
+        run: npm run build
+      - name: Generate Android project
+        run: npx cap add android
+      - name: Verify Android target
+        run: |
+          grep -n 'targetSdkVersion = 36' android/variables.gradle
+          grep -n 'compileSdkVersion = 36' android/variables.gradle
+      - name: Compile debug APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew --no-daemon assembleDebug
+      - name: Upload test APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: OceanCentinell-USA-debug-unsigned-test
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 7
