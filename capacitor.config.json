@@ -1,0 +1,8 @@
+{
+  "appId": "com.beaconoftheeagle.oceancentinellusa",
+  "appName": "OceanCentinell USA",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
