@@ -1,6 +1,6 @@
 {
   "name": "oceancentinell-usa",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "description": "OceanCentinell USA maritime operations local-first MVP",
   "scripts": {
