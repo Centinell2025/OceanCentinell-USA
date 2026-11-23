@@ -1,7 +1,7 @@
 # OceanCentinell USA
 
 **Owner / intended publisher:** Beacon of the Eagle LLC  
-**Status:** functional local-first MVP **v0.3.0**, not production-ready.  
+**Status:** functional local-first MVP **v0.4.0**, not production-ready.  
 **Target market:** United States. The release territory must be selected in Google Play Console.
 
 ## Features available today
@@ -57,7 +57,7 @@ This repository was found to be **public**. Do not commit API keys, private mari
 ## CI / release preparation
 GitHub Actions workflow `.github/workflows/android-build.yml` builds a **debug testing APK**, if it completes successfully. See the Actions tab and download the run artifact. A debug build is not a signed production AAB. See `GOOGLE_PLAY_USA.md`, `PRIVACY_POLICY.md`, and `COPYRIGHT_PREPARATION.md` for release and rights checklists.
 
-## Security hardening in v0.3.0
+## Security hardening in v0.4.0
 - Data schema validation with row/length limits, strict status values, ISO date checks, and unique record IDs.
 - Atomic local writes: failed storage operations do not silently alter the visible dataset.
 - Hardened CSV exports against spreadsheet formula injection.
@@ -66,3 +66,10 @@ GitHub Actions workflow `.github/workflows/android-build.yml` builds a **debug t
 - Security limitations and production prerequisites: see `SECURITY.md`.
 
 **Important:** These are prototype-level safeguards, not encryption, user authorization, real-time maritime monitoring, security certification or validation of an Android release.
+
+## Version 0.4.0 — USA Command Center design
+The user interface has been redesigned based on the visual language and section structure of the owner's OceanCentinell Enterprise reference (`pizat16/oceancentinell-enterprise`): dark navy/cyan Naval HUD, command banner and segmented navigation.
+
+New planning screens: **Network & OT Architecture**, **Cyber Threat Intelligence**, and **Compliance & Governance**. These screens are informational; they do not connect to AIS, SATCOM, threat feeds, scanners, agents, AI services or regulatory registries. Vessel, asset, incident and maintenance registers remain local and manually populated.
+
+The USA product is a distinct app and does not automatically inherit any production capability, certification, license, API, login, or security control from the Enterprise reference. The reference repository was read to guide layout; no production secrets or Enterprise backend were transferred. GitHub Pages hosting and Google Play production submission are not yet configured/verified for this repository.
