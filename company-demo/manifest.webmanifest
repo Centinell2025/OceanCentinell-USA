@@ -1,0 +1,15 @@
+{
+  "name": "OceanCentinell \u2014 Enterprise Evaluation",
+  "short_name": "OceanCentinell",
+  "description": "Local-first maritime operations recordkeeping",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#061322",
+  "theme_color": "#071827",
+  "lang": "en",
+  "categories": [
+    "business",
+    "productivity"
+  ]
+}

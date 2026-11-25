@@ -1,0 +1,30 @@
+name: Company demonstration
+on:
+  pull_request:
+    paths: ['company-demo/**', '.github/workflows/company-demo.yml']
+  push:
+    branches: [main]
+    paths: ['company-demo/**', '.github/workflows/company-demo.yml']
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test company workflows
+        working-directory: company-demo
+        run: npm test
+      - name: Build self-contained company sample
+        working-directory: company-demo
+        run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OceanCentinell-Company-Evaluation
+          path: |
+            company-demo/dist/OceanCentinell_Company_Demo.html
+            company-demo/README.md
+          if-no-files-found: error
